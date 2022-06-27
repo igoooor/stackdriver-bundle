@@ -1,0 +1,15 @@
+.DS_Store
+.bash_history
+.buildpath
+.project
+.settings
+.idea/
+.ash_history
+.ssh
+.vscode
+.composer
+.cache/
+vendor/
+composer.lock
+
+Tests/_reports
