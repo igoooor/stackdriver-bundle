@@ -13,5 +13,11 @@
     },
     "autoload": {
         "psr-4": { "Igoooor\\StackdriverBundle\\": "" }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/igoooor/google-cloud-php-core"
+        }
+    ]
 }
