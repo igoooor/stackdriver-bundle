@@ -14,12 +14,6 @@
             <argument/> <!-- $keyFile -->
             <argument/> <!-- $excludedExceptions -->
         </service>
-        <service id="Igoooor\StackdriverBundle\Log\StackdriverHandler">
-            <argument/> <!-- $projectId -->
-            <argument/> <!-- $name -->
-            <argument/> <!-- $level -->
-            <argument/> <!-- $keyFile -->
-        </service>
     </services>
 
 </container>

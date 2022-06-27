@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class StackdriverExceptionSubscriber implements EventSubscriberInterface
 {
-    private ?LoggingClient $client;
+    private ?LoggingClient $client = null;
     private ?string $name;
     private ?string $projectId;
     private ?string $serverEnvironment;
@@ -109,10 +109,9 @@ class StackdriverExceptionSubscriber implements EventSubscriberInterface
                 'projectId' => $this->projectId,
             ];
             if (null !== $this->keyFile) {
-                $config['keyFile'] = json_decode($this->keyFile, true);
+                $config['keyFilePath'] = $this->keyFile;
             }
-            $client = new LoggingClient($config);
-            $this->client = $client;
+            $this->client = new LoggingClient($config);
         }
 
         return $this->client;

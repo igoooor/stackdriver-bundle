@@ -12,9 +12,7 @@
         "symfony/monolog-bundle": "^3.8",
         "symfony/security-core": "^6.1",
         "symfony/http-kernel": "^6.1",
-        "google/cloud-core": "^1.46",
-        "monolog/monolog": "^3.1",
-        "psr/log": "^3.0"
+        "google/cloud-core": "^1.46"
     },
     "autoload": {
         "psr-4": { "Igoooor\\StackdriverBundle\\": "" }
@@ -22,11 +20,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/igoooor/google-cloud-php-core"
+            "url": "git@github.com:igoooor/google-cloud-php-core.git"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/igoooor/google-cloud-php-logging"
+            "url": "git@github.com:igoooor/google-cloud-php-logging.git"
         }
     ]
 }

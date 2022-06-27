@@ -28,11 +28,5 @@ class IgoooorStackdriverExtension extends Extension
             ->replaceArgument(2, $config['build_environment'])
             ->replaceArgument(3, $config['key_file'])
             ->replaceArgument(4, $config['excluded_exceptions']);
-
-        $container->getDefinition('Igoooor\StackdriverBundle\Log\StackdriverHandler')
-            ->replaceArgument(0, $config['project_id'])
-            ->replaceArgument(1, $config['project_name'])
-            ->replaceArgument(2, $config['log_level'])
-            ->replaceArgument(3, $config['key_file']);
     }
 }

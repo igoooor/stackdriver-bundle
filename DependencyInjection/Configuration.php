@@ -15,7 +15,6 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('project_id')->isRequired()->end()
                 ->scalarNode('project_name')->isRequired()->end()
                 ->scalarNode('build_environment')->isRequired()->end()
-                ->integerNode('log_level')->defaultValue(100)->end()
                 ->scalarNode('key_file')->defaultValue(null)->end()
                 ->arrayNode('excluded_exceptions')
                     ->defaultValue([])
