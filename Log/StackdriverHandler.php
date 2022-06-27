@@ -4,7 +4,8 @@ namespace Igoooor\StackdriverBundle\Log;
 
 use Google\Cloud\Logging\LoggingClient;
 use Monolog\Handler\PsrHandler;
-use Monolog\Logger;
+use Monolog\Level;
+use Monolog\LogRecord;
 use Psr\Log\LoggerInterface;
 
 class StackdriverHandler extends PsrHandler
@@ -18,7 +19,7 @@ class StackdriverHandler extends PsrHandler
     protected ?string $projectId;
     protected ?string $keyFile;
 
-    public function __construct(string $projectId, string $name, int $level = Logger::DEBUG, ?string $keyFile = null)
+    public function __construct(string $projectId, string $name, int|string|Level $level = Level::Debug, ?string $keyFile = null)
     {
         if ('' === $projectId) {
             return;
@@ -34,15 +35,15 @@ class StackdriverHandler extends PsrHandler
     /**
      * {@inheritdoc}
      */
-    public function handle(array $record): bool
+    public function handle(LogRecord $record): bool
     {
         if (!$this->isHandling($record) || null === $this->getClient()) {
             return false;
         }
 
-        $this->getLogger($record['channel'])->log(strtolower($record['level_name']), $record['message'], $record['context']);
+        $this->getLogger($record->channel)->log(strtolower($record->level->getName()), $record->message, $record->context);
 
-        return false === $this->bubble;
+        return !$this->bubble;
     }
 
     protected function getLogger(mixed $channel): LoggerInterface
@@ -70,8 +71,7 @@ class StackdriverHandler extends PsrHandler
             if (null !== $this->keyFile) {
                 $config['keyFile'] = json_decode($this->keyFile, true);
             }
-            $client = new LoggingClient($config);
-            $this->client = $client;
+            $this->client = new LoggingClient($config);
         }
 
         return $this->client;
