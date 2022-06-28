@@ -16,11 +16,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class StackdriverExceptionSubscriber implements EventSubscriberInterface
 {
     private ?LoggingClient $client = null;
-    private ?string $name;
-    private ?string $projectId;
-    private ?string $serverEnvironment;
-    private ?string $keyFile;
-    private ?TokenStorageInterface $tokenStorage;
+    private ?string $name = null;
+    private ?string $projectId = null;
+    private ?string $serverEnvironment = null;
+    private ?string $keyFile = null;
+    private ?TokenStorageInterface $tokenStorage = null;
     private array $excludedExceptions = [];
 
     public function __construct(string $projectId, string $name, string $serverEnvironment, ?string $keyFile = null, array $excludedExceptions = [], ?TokenStorageInterface $tokenStorage = null)
